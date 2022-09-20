@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket Test Simple</title>
+</head>
+<body>
+    <h2>WebSocket Test Simple</h2>
+    <div id="output"></div>
+</body>
+<script type="text/javascript">
+    let xmlHttp_Ip;
+    let xmlHttp_Port;
+
+    let ip;
+    let port;
+
+    let wsUri;
+    let output;
+
+    let started = false;
+
+    function init()
+    {
+        xmlHttp_Ip = new XMLHttpRequest();
+        xmlHttp_Ip.onreadystatechange = onRequestResponse_Ip;
+        xmlHttp_Ip.open("GET", `${window.location.origin}/api/wsIp`);
+        xmlHttp_Ip.send(null);
+
+        xmlHttp_Port = new XMLHttpRequest();
+        xmlHttp_Port.onreadystatechange = onRequestResponse_Port;
+        xmlHttp_Port.open("GET", `${window.location.origin}/api/wsPort`);
+        xmlHttp_Port.send(null);
+    }
+
+    function onRequestResponse_Ip(e)
+    {
+        console.log(e);
+        ip = xmlHttp_Ip.responseText.replaceAll("\"", "");
+        console.log(`IP  : ${ip}`);
+        if (ip !== undefined || port !== undefined)
+            start();
+    }
+
+    function onRequestResponse_Port(e)
+    {
+        port = xmlHttp_Port.responseText;
+        console.log(`PORT: ${port}`);
+        if (ip !== undefined || port !== undefined)
+            start();
+    }
+
+    function start()
+    {
+        if (started)
+            return;
+        if (ip === "" || port === "")
+            return;
+
+        started = true;
+        wsUri = `ws://${ip}:${port}/JsonRpcService`;
+        console.log(wsUri);
+        output = document.getElementById("output");
+        testWebSocket();
+    }
+
+    function testWebSocket()
+    {
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) { onOpen(evt) };
+        websocket.onclose = function(evt) { onClose(evt) };
+        websocket.onmessage = function(evt) { onMessage(evt) };
+        websocket.onerror = function(evt) { onError(evt) };
+    }
+
+    function onOpen(evt)
+    {
+        writeToScreen("CONNECTED");
+        doSend("\{\"jsonrpc\": 2.0, \"method\": \"DeviceRegistration\", \"params\": \{ \"communication\": { \"direction\": \"to\", \"clientConnectionType\": \"Server\" }, \"data\": \{\"name\": \"Blitzi\", \"clientConnectionType\": \"Desktop\"\} \}, \"id\": 0\}");
+    }
+
+    function onClose(evt)
+    {
+        writeToScreen("DISCONNECTED");
+    }
+
+    function onMessage(evt)
+    {
+        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+        // websocket.close();
+    }
+
+    function onError(evt)
+    {
+        writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    }
+
+    function doSend(message)
+    {
+        writeToScreen("SENT: " + message);
+        websocket.send(message);
+    }
+
+    function writeToScreen(message)
+    {
+        var pre = document.createElement("p");
+        pre.style.wordWrap = "break-word";
+        pre.innerHTML = message;
+        output.appendChild(pre);
+    }
+
+    window.addEventListener("load", init, false);
+</script>
+</html>

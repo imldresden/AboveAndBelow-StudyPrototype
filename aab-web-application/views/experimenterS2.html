@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="../_js/_static/materialize/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../_js/_static/noUiSlider/nouislider.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../_css/experimenterS2.css" media="screen,projection"/>
+    <meta charset="UTF-8">
+    <title>Experimenter Client</title>
+</head>
+<body>
+<div class="row experimenter-div">
+<!-- Left Slider: Distance -->
+    <div class="col s2">
+        <div class="row slider-label-div">
+            Distance
+        </div>
+        <div class="row slider-row">
+            <div id="distance-slider" class="ar-placement-slider"></div>
+        </div>
+    </div>
+<!-- Right Slider: Tilt -->
+    <div class="col s2">
+        <div class="row slider-label-div">
+            Tilt
+        </div>
+        <div class="row">
+            <div id="tilt-slider" class="ar-placement-slider"></div>
+        </div>
+    </div>
+    <!-- Right Slider: Size -->
+    <div class="col s2">
+        <div class="row slider-label-div">
+            Size
+        </div>
+        <div class="row">
+            <div id="scale-slider" class="ar-placement-slider"></div>
+        </div>
+    </div>
+<!-- Buttons and Other Values -->
+    <div class="col s6">
+<!-- Start-Up functions -->
+        <div class="row">
+            <div class="row button-label-div">
+                Start Up
+            </div>
+            <div class="row">
+                <div class="col s6 input-field ">
+                    <input placeholder="-1" id="participant-id" type="text" class="validate">
+                    <label for="participant-id">Participant ID</label>
+                </div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-start">Start Experiment</a>
+                </div>
+            </div>
+        </div>
+<!-- Additional Information -->
+        <div class="row">
+            <div class="row button-label-div">
+                Current Trial Values
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-part" type="text" class="validate">
+                        <label for="label-part">Part</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-trial" type="text" class="validate">
+                        <label for="label-trial">Trial Number</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-area" type="text" class="validate">
+                        <label for="label-area">Area</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-content" type="text" class="validate">
+                        <label for="label-content">Content Type</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="Not Started Yet" id="label-state" type="text" class="validate">
+                        <label for="label-distance">State</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-distance" type="text" class="validate">
+                        <label for="label-distance">Distance</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-tilt" type="text" class="validate">
+                        <label for="label-tilt">Tilt</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-display">
+                        <input disabled value="-1" id="label-size" type="text" class="validate">
+                        <label for="label-size">Size</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- General functions -->
+        <div class="row">
+            <div class="row button-label-div">
+                General Functions
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-locking">QR Lock</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-blocking">Block Participant UI</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-nextTrial">Next Trial</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-nextState">Next State</a>
+                </div>
+            </div>
+        </div>
+<!-- Time Track -->
+        <div class="row">
+            <div class="row button-label-div">
+                Positioning
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="1.89" id="value-ceiling" type="text" class="validate">
+                        <label for="value-ceiling">Ceiling Height</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="-0.24" id="value-translationX" type="text" class="validate">
+                        <label for="value-translationX">Translation X</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="0" id="value-translationY" type="text" class="validate">
+                        <label for="value-translationY">Translation Y</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="0.06" id="value-translationZ" type="text" class="validate">
+                        <label for="value-translationZ">Translation Z</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="-0.71" id="value-floor" type="text" class="validate">
+                        <label for="value-floor">Floor Height</label>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="row input-field values-input">
+                        <input value="0" id="value-rotationY" type="text" class="validate">
+                        <label for="value-rotationY">Rotation X</label>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn-large ar-placement-btn" id="btn-setCoordinateSystem">Set Coordinate System</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="module">
+    import {ExperimenterManagerS2} from "../_js/clients/experimenterManagerS2.js";
+    import {DEVICE_TYPE, GlobalState} from "../_js/globalState.js";
+
+    let main = new ExperimenterManagerS2();
+    let wsConnected_Lambda = () => init();
+
+    GlobalState.Instance.DeviceType = DEVICE_TYPE[0];
+    GlobalState.Instance.on(GlobalState.WS_CONNECTED, wsConnected_Lambda);
+    GlobalState.Instance.ConnectToWebSocket();
+
+    function init() {
+        GlobalState.Instance.off(GlobalState.WS_CONNECTED, wsConnected_Lambda);
+        main.initialize();
+    }
+
+</script>
+<script type="text/javascript" src="../_js/_static/d3/d3.min.js"></script>
+<script type="text/javascript" src="../_js/_static/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_js/_static/noUiSlider/nouislider.min.js"></script>
+<script type="text/javascript" src="../_js/_static/wNumb/wNumb.min.js"></script>
+<script type="text/javascript" src="../_js/_static/eventEmitter.js"></script>
+</html>

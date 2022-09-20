@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="testBtn">Tests</button>
+<button id="emulatorBtn">Emulators</button>
+</body>
+<script type="module">
+    let testBtn = d3.select("#testBtn");
+    testBtn.on("click", () => {
+        window.open(`/tests`, "_self");
+    })
+
+    let emulatorBtn = d3.select("#emulatorBtn");
+    emulatorBtn.on("click", () => {
+        window.open(`/emulators`, "_self");
+    })
+</script>
+<script type="text/javascript" src="_js/_static/d3/d3.min.js"></script>
+</html>

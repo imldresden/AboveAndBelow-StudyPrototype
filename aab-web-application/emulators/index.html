@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emulator Index</title>
+</head>
+<body>
+    <button id="optitrackBtn">OptiTrack Emulator</button>
+</body>
+<script type="module">
+    let button = d3.select("#optitrackBtn");
+    button.on("click", () => {
+        window.open(`/emulators/optitrackEmulator.html`, "_self");
+    })
+</script>
+<script type="text/javascript" src="../_js/_static/d3/d3.min.js"></script>
+</html>

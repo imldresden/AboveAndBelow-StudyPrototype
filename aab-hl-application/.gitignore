@@ -1,0 +1,54 @@
+# =============== #
+# Unity generated #
+# =============== #
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
+DesktopBuild/
+DesktopBuild_UWP/
+App/
+UWP/
+WindowsStoreApp/
+project.json
+project.lock.json
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+.vs/
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.csproj
+*.pidb
+*.suo
+/*.sln
+*.sln
+*.user
+*.unityproj
+*.ipch
+*.opensdf
+*.sdf
+*.obj
+*.tlog
+*.log
+*.idb
+*.opendb
+WSATestCertificate.pfx
+WSATestCertificate.pfx.meta
+
+# =========================================== #
+# Easy to load packagaes, like NuGet or TMPro #
+# =========================================== #
+
+# Assets/Packages
+# Assets/Packages.meta
+# Assets/TextMesh Pro
+# Assets/TextMesh Pro.meta

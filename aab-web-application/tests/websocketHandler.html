@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test Json Rpc Handler</title>
+</head>
+<body>
+    <h2>WebSocket Test Json Rpc Handler</h2>
+    <div id="output"></div>
+</body>
+<script type="module">
+    import {WebSocketClient} from "../_js/networking/webSocket/webClient.js";
+    import {ApiInterface} from "../_js/networking/utils/apiInterface.js";
+    import {JsonRpcHandler} from "../_js/networking/eventHandling/jsonRpcHandler.js";
+    import {ClientConnectionType} from "../_js/networking/webSocket/clientConnectionType.js";
+    import {JsonRpcEvent} from "../_js/networking/eventHandling/jsonRpcEvent.js";
+    import {JsonRpcMessage} from "../_js/networking/eventHandling/jsonRpcMessage.js";
+
+    let output;
+    let wsIp, wsPort;
+
+    function init() {
+        output = document.getElementById("output");
+
+        ApiInterface.Instance.GetRequest({
+            path: "/wsIp",
+            callback: onGetRequest_Ip
+        });
+        ApiInterface.Instance.GetRequest({
+            path: "/wsPort",
+            callback: onGetRequest_Port
+        });
+    }
+
+    /**
+     *
+     * @param {string} type
+     * @param {object} response
+     */
+    function onGetRequest_Ip(type, response) {
+        wsIp = response.replaceAll("\"", "");
+        if (wsIp !== undefined && wsPort !== undefined)
+            start();
+    }
+
+    /**
+     *
+     * @param {string} type
+     * @param {object} response
+     */
+    function onGetRequest_Port(type, response) {
+        wsPort = response;
+        if (wsIp !== undefined && wsPort !== undefined)
+            start();
+    }
+
+    function start() {
+        JsonRpcHandler.Instance.ConnectToWebSocketClient();
+
+        WebSocketClient.Instance.on(WebSocketClient.MESSAGE_RECEIVED, webSocket_MessageReceived);
+        WebSocketClient.Instance.on(WebSocketClient.CONNECTION_OPENED, webSocket_Opened);
+        WebSocketClient.Instance.on(WebSocketClient.CONNECTION_CLOSED, webSocket_Closed);
+        WebSocketClient.Instance.on(WebSocketClient.STOPPED, webSocket_Stopped);
+        WebSocketClient.Instance.StartClient({
+            ip: wsIp,
+            port: wsPort,
+            address: "/JsonRpcService"
+        });
+    }
+
+    function webSocket_MessageReceived(message) {
+        writeToScreen(message);
+    }
+
+    function webSocket_Opened() {
+        writeToScreen("CONNECTED");
+
+        JsonRpcHandler.Instance.SendRequest({
+            message: new JsonRpcMessage({
+                data: {
+                    "name": "WsHandlerTest",
+                    "clientConnectionType": ClientConnectionType.Desktop
+                },
+                method: JsonRpcEvent.DeviceRegistration
+            }),
+            ccType: ClientConnectionType.Server
+        })
+    }
+
+    function webSocket_Closed() {
+        writeToScreen("CLOSED");
+    }
+
+    function webSocket_Stopped() {
+        writeToScreen("STOPPED");
+    }
+
+    function writeToScreen(message)
+    {
+        let pre = document.createElement("p");
+        pre.style.wordWrap = "break-word";
+        pre.innerHTML = message;
+        output.appendChild(pre);
+    }
+
+    window.addEventListener("load", init, false);
+</script>
+<script type="text/javascript" src="../_js/_static/eventEmitter.js"></script>
+</html>

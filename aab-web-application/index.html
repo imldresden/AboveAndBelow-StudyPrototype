@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="_js/_static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta charset="UTF-8">
+    <title>A&B Study Mobile Client Overview</title>
+</head>
+<body>
+<div style="padding-top: 48vh; padding-left: 33vw">
+    <a class="waves-effect waves-light btn-large" id="participantS1Btn">Participant Client S1</a>
+    <a class="waves-effect waves-light btn-large" id="experimenterS1Btn">Experimenter Client S1</a>
+    <a class="waves-effect waves-light btn-large" id="participantS2Btn">Participant Client S2</a>
+    <a class="waves-effect waves-light btn-large" id="experimenterS2Btn">Experimenter Client S2</a>
+    <a class="waves-effect waves-light btn-large" id="debugBtn">Debug</a>
+</div>
+</body>
+<script type="module">
+    $("#participantS1Btn").on("click", () => {
+        window.open(`/views/participantS1.html`, "_self");
+    });
+
+    $("#experimenterS1Btn").on("click", () => {
+        window.open(`/views/experimenterS1.html`, "_self");
+    });
+    $("#participantS2Btn").on("click", () => {
+        window.open(`/views/participantS2.html`, "_self");
+    });
+
+    $("#experimenterS2Btn").on("click", () => {
+        window.open(`/views/experimenterS2.html`, "_self");
+    });
+
+    $("#debugBtn").on("click", () => {
+        window.open(`/views/debug.html`, "_self");
+    });
+</script>
+<script type="text/javascript" src="_js/_static/jQuery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="_js/_static/materialize/js/materialize.min.js"></script>
+</html>

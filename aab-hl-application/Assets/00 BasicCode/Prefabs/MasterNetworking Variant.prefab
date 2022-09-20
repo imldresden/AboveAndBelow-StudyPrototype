@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2749174808925110527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293918286173971252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64487568891e1546bb068fadd9754c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartServer: 0
+  StartWebServer: 0
+  StartClient: 1
+--- !u!1001 &3798697129311526517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316541169369331138, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685065921711635777, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: m_Name
+      value: MasterNetworking
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608056348371708367, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: Ip
+      value: 172.19.128.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608056348371708367, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: ConnectionName
+      value: Desktop Test 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608056349926211060, guid: 6485fe2ea13b64849bf8af136084800a,
+        type: 3}
+      propertyPath: WebSocketErrorHandling
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6485fe2ea13b64849bf8af136084800a, type: 3}
+--- !u!1 &1293918286173971252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2685065921711635777, guid: 6485fe2ea13b64849bf8af136084800a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3798697129311526517}
+  m_PrefabAsset: {fileID: 0}

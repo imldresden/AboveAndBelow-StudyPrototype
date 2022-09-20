@@ -1,0 +1,198 @@
+﻿<Window x:Class="MasterNetworking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterNetworking"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="947">
+    <Grid>
+        <RichTextBox x:Name="Websocket_RTB" HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="570" Margin="26,127,0,0" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" AutoWordSelection="False" AcceptsTab="True" IsReadOnly="True" IsUndoEnabled="False">
+            <FlowDocument/>
+        </RichTextBox>
+        <RichTextBox x:Name="GeneralLog_RTB" HorizontalAlignment="Left" Height="112" Margin="26,10,0,0" VerticalAlignment="Top" Width="570" IsReadOnly="True" IsUndoEnabled="False" AcceptsTab="True" AutoWordSelection="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+            <FlowDocument PageWidth="1000">
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="Server_Btn" Content="Start Server" HorizontalAlignment="Left" Margin="601,539,0,0" VerticalAlignment="Top" Width="333" Click="_Server_Btn_Click"/>
+        <Label Content="General Log" HorizontalAlignment="Left" Margin="-24,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="WebSocket" HorizontalAlignment="Left" Margin="-22,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="OtiTrack Data" HorizontalAlignment="Left" Margin="-30,456,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <DataGrid x:Name="RigidBody_DG" HorizontalAlignment="Left" Height="131" Margin="26,428,0,0" VerticalAlignment="Top" Width="570" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="ID" Width="55"/>
+                <DataGridTextColumn Binding="{Binding X}" Header="X" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Y}" Header="Y" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Z}" Header="Z" Width="80"/>
+                <DataGridTextColumn Binding="{Binding RotX}" Header="Yaw (Y)" Width="80"/>
+                <DataGridTextColumn Binding="{Binding RotY}" Header="Ptich (X)" Width="80"/>
+                <DataGridTextColumn Binding="{Binding RotZ}" Header="Roll (Z)" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TabControl HorizontalAlignment="Left" Height="519" Margin="601,8,0,0" VerticalAlignment="Top" Width="333">
+            <TabItem Header="Web">
+                <Grid>                    
+                    <GroupBox x:Name="Websocket_GB" Header="Output - WebSocket" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Use WebSocket Output:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="WebSocket Port:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="OutputWebsocket_CB" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsChecked="True" Checked="_OutputWebsocket_CB_CheckStateChanged" Unchecked="_OutputWebsocket_CB_CheckStateChanged"/>
+                            <TextBox x:Name="WebSocketPort_TB" TextWrapping="Wrap" Text="3100" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>                 
+                    <GroupBox x:Name="LoggingWeb_GB" Header="Logging" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Margin="0,80,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Log File Name Prefix:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>     
+                            <Label Content="What to Log:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>       
+                            <TextBox x:Name="LoggingWebPrefix_TB" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <RadioButton x:Name="LoggingWebLogEverything_RB" Content="Everything" GroupName="WebLoggingLog" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center" Checked="LoggingWebLogEverything_RB_Checked"/>
+                                <RadioButton x:Name="LoggingWebLogOnlyLog_RB" Content="Only Log Messages" GroupName="WebLoggingLog" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" IsChecked="True" Checked="LoggingWebLogOnlyLog_RB_Checked"/>
+                                <RadioButton x:Name="LoggingWebLogNothing_RB" Content="Nothing" GroupName="WebLoggingLog" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Checked="LoggingWebLogNothing_RB_Checked"/>
+                            </Grid>                               
+                            <Button x:Name="LoggingWebLogEmptyUiRTB_Btn" Content="Empty Log" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="Auto" Click="LoggingWebLogEmptyUiRTB_Btn_Click"/>
+                        </Grid>                        
+                    </GroupBox>
+                    <GroupBox x:Name="Webserver_GB" Header="Webserver - Website" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Margin="0,396,0,0" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Open WebServer:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="WebServer Port:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="Webserver_CB" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsChecked="True"/>
+                            <TextBox x:Name="WebserverPort_TB" TextWrapping="Wrap" Text="1234" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                            <Button x:Name="OpenWebsite_Btn" Content="Open Website" Grid.Row="2" VerticalAlignment="Center" IsEnabled="False" Grid.ColumnSpan="2" Width="Auto" Click="_OpenWebsite_Btn_Click"/>
+                        </Grid>
+                    </GroupBox>   
+                </Grid>
+            </TabItem>
+            <TabItem Header="OptiTrack">
+                <Grid>                    
+                    <GroupBox x:Name="InputNatNet_GB" Header="Input - NatNet" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Use NatNet Input:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="Local IP:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                            <Label Content="Motive Server IP:" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                            <Label Content="Motive Type:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+                            <RadioButton x:Name="InputNatNet_RB" Content="Use" GroupName="InputType" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsChecked="True" Unchecked="_InputNatNet_RB_Unchecked"/>
+                            <TextBox x:Name="NatNetLocalIP_TB" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                            <TextBox x:Name="NatNetMotiveIP_TB" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+                            <Grid Grid.Row="3" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <RadioButton x:Name="NatNetMotiveUnicast_RB" Content="Unicast" GroupName="MotiveType" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center"/>
+                                <RadioButton x:Name="NatNetMotiveMulticast_RB" Content="Multicast" GroupName="MotiveType" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" IsChecked="True"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="InputOsc_GB" Header="Input - OSC" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Margin="0,242,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Use NatNet Input:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="OSC Port:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                            <RadioButton x:Name="InputOsc_RB" Content="Use" GroupName="InputType" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                            <TextBox x:Name="OscInputPort_TB" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="5103"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="OutputOsc_GB" Header="Output - OSC" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" Margin="0,136,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Use OSC Output:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <Label Content="OSC Destination IP:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                            <Label Content="OSC Port:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                            <CheckBox x:Name="OutputOsc_CB" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" IsChecked="True"/>
+                            <TextBox x:Name="OscDestinationIP_TB" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="141.76.67.175"/>
+                            <TextBox x:Name="OscOutputPort_TB" TextWrapping="Wrap" Text="5103" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+email_1newMessage.png: https://www.flaticon.com/free-icon/new-message_104710
+ramen.jpg: https://www.readyseteat.com/recipes-Teriyaki-Vegetable-Noodle-Bowl-8708
+ramenScreenshot: taken from same site as ramen.jpg
+
+store layout: 
+https://i.pinimg.com/564x/9a/48/ad/9a48ad551fd94f0d94a41a38250ba5e8.jpg
+
+fitnessTracker:
+https://discussions.apple.com/thread/250620894

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="../_js/_static/materialize/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../_js/_static/noUiSlider/nouislider.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../_css/participantS2.css" media="screen,projection"/>
+    <link rel="manifest" href="../manifest.json">
+    <meta charset="UTF-8">
+    <title>Participant Client</title>
+</head>
+<body>
+<div class="participant-div">
+<div class="blocking-div">
+    <div></div>
+    <span>Blocked!</span>
+</div>
+<div class="row main-row-div">
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+<!-- Left Slider: Distance -->
+                <div class="col s4">
+                    <div class="row slider-label-div" id="left-slider-label">
+                    </div>
+                    <div class="row" id="left-slider-row">
+                    </div>
+                </div>
+<!-- Middle area: Spacer -->
+                <div class="col s4 custom-spacer horizontal-spacer">
+                </div>
+<!-- Right Slider: Tilt -->
+                <div class="col s4">
+                    <div class="row slider-label-div" id="right-slider-label">
+                    </div>
+                    <div class="row" id="right-slider-row">
+                    </div>
+                </div>
+            </div>
+<!-- Middle area: Spacer -->
+            <div class="row custom-spacer vertical-spacer">
+            </div>
+<!-- Control Button -->
+            <div class="row">
+                <a class="waves-effect waves-light btn-large control-btn active" id="btn-control">Next</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script type="module">
+    import {ParticipantManagerS2} from "../_js/clients/participantManagerS2.js";
+    import {DEVICE_TYPE, GlobalState} from "../_js/globalState.js";
+
+    document.documentElement.webkitRequestFullScreen();
+
+    let main = new ParticipantManagerS2();
+    let wsConnected_Lambda = () => init();
+
+    GlobalState.Instance.DeviceType = DEVICE_TYPE[1];
+    GlobalState.Instance.on(GlobalState.WS_CONNECTED, wsConnected_Lambda);
+    GlobalState.Instance.ConnectToWebSocket();
+
+    function init() {
+        GlobalState.Instance.off(GlobalState.WS_CONNECTED, wsConnected_Lambda);
+        main.initialize();
+    }
+</script>
+<script type="text/javascript" src="../_js/_static/d3/d3.min.js"></script>
+<script type="text/javascript" src="../_js/_static/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_js/_static/noUiSlider/nouislider.min.js"></script>
+<script type="text/javascript" src="../_js/_static/wNumb/wNumb.min.js"></script>
+<script type="text/javascript" src="../_js/_static/eventEmitter.js"></script>
+</html>

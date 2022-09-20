@@ -1,0 +1,31 @@
+.experimenter-div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.slider-label-div {
+    font-weight: bolder;
+    font-size: 18px
+}
+
+.slider-row {
+    padding-top: 15px;
+}
+
+.ar-placement-slider {
+    height: 80vh;
+    width: 30px;
+}
+
+.ar-placement-slider .noUi-handle {
+    width: 40px;
+    height: 60px;
+    top: -30px;
+}
+
+/*#region button*/
+.ar-placement-btn {
+    height: 8vh;
+    line-height: 8vh;
+}
+/*#endregion*/

@@ -1,0 +1,79 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    /* This is necessary to prevent all touch action for the browser itself. This allows the hammer.js recognizer to work. */
+    touch-action: none;
+    /*experimental: prevent text selection (especially for panning or dragging in visualizations)*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+}
+
+/*#region slider*/
+.slider-label-div {
+    font-weight: bolder;
+    font-size: 18px
+}
+
+.ar-placement-slider .noUi-pips {
+    color: black;
+}
+
+.noUi-vertical .noUi-handle::before,
+.noUi-vertical .noUi-handle::after {
+    left: 6px;
+    height: 2px;
+    width: 26px;
+}
+.noUi-vertical .noUi-handle::before {
+    top: 25px;
+}
+.noUi-vertical .noUi-handle::after {
+    top: 33px;
+}
+
+.noUi-horizontal .noUi-handle::before,
+.noUi-horizontal .noUi-handle::after {
+    top: 6px;
+    height: 26px;
+    width: 2px;
+}
+.noUi-horizontal .noUi-handle::before {
+    left: 25px;
+}
+.noUi-horizontal .noUi-handle::after {
+    left: 33px;
+}
+
+.noUi-connects {
+    background-color: slategrey;
+}
+
+.noUi-touch-area {
+    background: forestgreen;
+}
+
+.ar-placement-slider .noUi-pips {
+    color: black;
+}
+/*#endregion*/
+
+.button-label-div {
+    text-align: center;
+    font-weight: bolder;
+    background-color: black;
+    background-clip: content-box;
+    color: whitesmoke;
+}
+
+.ar-placement-btn {
+    width: 100%;
+    background-color: tomato;
+}
+.ar-placement-btn.active {
+    background-color: forestgreen;
+}
+.ar-placement-btn.toggled {
+    background-color: midnightblue;
+}

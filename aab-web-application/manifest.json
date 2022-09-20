@@ -1,0 +1,8 @@
+{
+  "short_name": "A&B PClient",
+  "name": "Above & Below Participant Client",
+  "icons": [],
+  "display":      "fullscreen",
+  "orientation":  "portrait",
+  "background_color": "#33691e"
+}

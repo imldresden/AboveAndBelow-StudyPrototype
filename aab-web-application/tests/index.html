@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests Index</title>
+</head>
+<body>
+<button id="websocketSimpleBtn">WebSocket Simple Test</button>
+<button id="websocketHandlerBtn">WebSocket Handler Test</button>
+</body>
+<script type="module">
+    let simpleBtn = d3.select("#websocketSimpleBtn");
+    simpleBtn.on("click", () => {
+        window.open(`/tests/websocketSimple.html`, "_self");
+    })
+
+    let handlerBtn = d3.select("#websocketHandlerBtn");
+    handlerBtn.on("click", () => {
+        window.open(`/tests/websocketHandler.html`, "_self");
+    });
+</script>
+<script type="text/javascript" src="../_js/_static/d3/d3.min.js"></script>
+</html>

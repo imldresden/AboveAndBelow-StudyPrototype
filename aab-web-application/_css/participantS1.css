@@ -1,0 +1,65 @@
+.participant-div {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-row-div {
+    padding-top: 10px;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    z-index: 0;
+}
+
+/*#region Blocking*/
+.blocking-div {
+    display: none;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    z-index: -1;
+}
+
+.blocking-div.active {
+    display: block;
+    z-index: 1;
+}
+
+.blocking-div > div {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background: black;
+    opacity: 60%;
+}
+
+.blocking-div > span {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    line-height: 100vh;
+    width: inherit;
+    font-weight: bolder;
+    color: whitesmoke;
+    font-size: 100px;
+}
+/*#endregion*/
+
+.ar-placement-slider {
+    height: 30px;
+    width: 80vw;
+}
+
+.ar-placement-slider .noUi-handle {
+    width: 60px;
+    height: 40px;
+    right: -30px;
+}
+
+/*#region button*/
+.ar-placement-btn {
+    height: 36vh;
+    line-height: 36vh;
+}
+/*#endregion*/
