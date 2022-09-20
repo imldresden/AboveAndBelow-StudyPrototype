@@ -28,7 +28,7 @@ The logged files can be found in the `out` folder of the build of the server.
 The server can additionally handle OSC and NatNet messages (associated with OptiTrack data), however, those are not used in this prototype.
 Further, this server is an early version of a more comprehensive server and bridge architecture which will also be published shortly on our organizations GitHub page.
 
-[3]: aab-server\WebsocketServer\Code\Networking\README.md
+[3]: aab-server/WebsocketServer/Code/Networking/README.md
 
 ### aab-web-application
 
